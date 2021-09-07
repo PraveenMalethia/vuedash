@@ -1,5 +1,13 @@
 # Vue Dashboard For Quick Start !
 
+## 🚀 Features
+
+- Vue/Nuxt 2.15 [Nuxt](https://nuxtjs.org/)
+- Install via [npm](https://www.npmjs.com/)
+- User log in/out, sign up, password reset via [nuxt/auth](https://auth.nuxtjs.org/)
+- Toast with [Nuxtjs/toast](https://www.npmjs.com/package/@nuxtjs/toast)
+- Styling with [Vuetify](https://vuetifyjs.com/en/)
+
 ## Build Setup
 
 ```bash
