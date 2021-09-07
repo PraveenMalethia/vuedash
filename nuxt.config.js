@@ -1,5 +1,5 @@
 import colors from "vuetify/es5/util/colors";
-
+let development = process.env.NODE_ENV !== 'production'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -43,6 +43,12 @@ export default {
     duration: 2000,
   },
 
+  axios: {
+    baseURL: development
+      ? 'http://127.0.0.1:8000'
+      : 'https://api-button.herokuapp.com',
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -79,5 +85,69 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  // ---- uncomment below section to customize the loading bar on top of screen -----
+
+  // loading: {
+  //   color: '#2563eb',
+  //   height: '5px',
+  // },
+
+
+  // ---- uncomment below section to customize or adding the auth in this website -----
+  // auth: {
+  //   vuex: {
+  //     namespace: 'auth',
+  //   },
+  //   strategies: {
+  //     local: {
+  //       scheme: 'refresh',
+  //       endpoints: {
+  //         login: {
+  //           url: development
+  //             ? 'http://127.0.0.1:8000/auth/login/'
+  //             : 'https://api-button.herokuapp.com/auth/login/',
+  //           method: 'POST',
+  //         },
+  //         refresh: {
+  //           url: development
+  //             ? 'http://127.0.0.1:8000/auth/token/refresh/'
+  //             : 'https://api-button.herokuapp.com/auth/token/refresh/',
+  //           method: 'post',
+  //         },
+  //         logout: {
+  //           url: development
+  //             ? 'http://127.0.0.1:8000/auth/logout/'
+  //             : 'https://api-button.herokuapp.com/auth/logout/',
+  //           method: 'GET',
+  //         },
+  //         user: {
+  //           url: development
+  //             ? 'http://127.0.0.1:8000/auth/user/'
+  //             : 'https://api-button.herokuapp.com/auth/user/',
+  //           method: 'GET',
+  //         },
+  //       },
+  //       token: {
+  //         property: 'access',
+  //       },
+  //       refreshToken: {
+  //         property: 'refresh',
+  //         data: 'refresh',
+  //         maxAge: 60 * 60 * 24 * 5,
+  //       },
+  //       user: {
+  //         autoFetch: true,
+  //         property: false,
+  //       },
+  //     },
+  //   },
+  //   redirect: {
+  //     login: '/login',
+  //     logout: '/login',
+  //     callback: '/login',
+  //     home: '/',
+  //   },
+  // },
 };
