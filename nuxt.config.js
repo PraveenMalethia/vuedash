@@ -37,6 +37,9 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
     '@nuxtjs/toast',
+
+    // uncomment below to enable nuxt auth services
+    // '@nuxtjs/auth-next',
   ],
   toast: {
     position: 'bottom-right',
@@ -46,7 +49,7 @@ export default {
   axios: {
     baseURL: development
       ? 'http://127.0.0.1:8000'
-      : 'https://api-button.herokuapp.com',
+      : 'https://your-backend-api.com',
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -55,7 +58,8 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: "en"
+      lang: "en",
+      name: 'Vuetify Dashboard',
     }
   },
 
@@ -107,25 +111,25 @@ export default {
   //         login: {
   //           url: development
   //             ? 'http://127.0.0.1:8000/auth/login/'
-  //             : 'https://api-button.herokuapp.com/auth/login/',
+  //             : 'https://your-backend-api.com/auth/login/',
   //           method: 'POST',
   //         },
   //         refresh: {
   //           url: development
   //             ? 'http://127.0.0.1:8000/auth/token/refresh/'
-  //             : 'https://api-button.herokuapp.com/auth/token/refresh/',
+  //             : 'https://your-backend-api.com/auth/token/refresh/',
   //           method: 'post',
   //         },
   //         logout: {
   //           url: development
   //             ? 'http://127.0.0.1:8000/auth/logout/'
-  //             : 'https://api-button.herokuapp.com/auth/logout/',
+  //             : 'https://your-backend-api.com/auth/logout/',
   //           method: 'GET',
   //         },
   //         user: {
   //           url: development
   //             ? 'http://127.0.0.1:8000/auth/user/'
-  //             : 'https://api-button.herokuapp.com/auth/user/',
+  //             : 'https://your-backend-api.com/auth/user/',
   //           method: 'GET',
   //         },
   //       },
@@ -149,5 +153,10 @@ export default {
   //     callback: '/login',
   //     home: '/',
   //   },
+  // },
+
+  // ---- uncomment below section to enable auth middleware in this website -----
+  // router: {
+  //   middleware: ['auth']
   // },
 };
