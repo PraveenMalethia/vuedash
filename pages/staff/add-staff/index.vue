@@ -139,6 +139,7 @@ export default {
     addStaff() {
       if (this.$refs.form.validate()) {
         // this.$store.dispatch("addStaff", this.staff);
+        this.$toast.success('Staff Created')
         this.$router.push("/staff");
       }
     },
