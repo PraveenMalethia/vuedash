@@ -1,4 +1,4 @@
-# Vue Dashboard For Quick Start !
+# Vue Dashboard With 🔋 Included !
 
 ## 🚀 Features
 
