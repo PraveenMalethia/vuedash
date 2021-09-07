@@ -7,6 +7,7 @@
 - User log in/out, sign up, password reset via [nuxt/auth](https://auth.nuxtjs.org/)
 - Toast with [Nuxtjs/toast](https://www.npmjs.com/package/@nuxtjs/toast)
 - Styling with [Vuetify](https://vuetifyjs.com/en/)
+- Form Validation with [Vuelidate](https://vuelidate.js.org/)
 
 ## Build Setup
 
