@@ -37,6 +37,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
     '@nuxtjs/toast',
+    '@nuxtjs/auth-next',
 
     // uncomment below to enable nuxt auth services
     // '@nuxtjs/auth-next',

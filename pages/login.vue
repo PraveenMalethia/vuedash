@@ -1,44 +1,39 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12" sm="12" lg="6" offset-lg="3">
+      <v-col cols="12" sm="12" lg="6" align-self="center">
+        <v-img
+          src="/svg/login.svg"
+          max-height="70%"
+          max-width="70%"
+          alt="login"
+        ></v-img>
+      </v-col>
+      <v-col cols="12" sm="12" lg="6" align-self="center">
         <form>
           <v-text-field
             v-model="name"
             :error-messages="nameErrors"
-            :counter="10"
-            label="Name"
+            label="Username"
             required
+            outlined
             @input="$v.name.$touch()"
             @blur="$v.name.$touch()"
           ></v-text-field>
           <v-text-field
-            v-model="email"
-            :error-messages="emailErrors"
-            label="E-mail"
+            outlined
             required
-            @input="$v.email.$touch()"
-            @blur="$v.email.$touch()"
+            label="Password"
+            hint="At least 8 characters"
+            v-model="password"
+            :type="show ? 'text' : 'password'"
+            :error-messages="passwordErrors"
+            @click:append="show = !show"
+            @input="$v.password.$touch()"
+            @blur="$v.password.$touch()"
+            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
           ></v-text-field>
-          <v-select
-            v-model="select"
-            :items="items"
-            :error-messages="selectErrors"
-            label="Item"
-            required
-            @change="$v.select.$touch()"
-            @blur="$v.select.$touch()"
-          ></v-select>
-          <v-checkbox
-            v-model="checkbox"
-            :error-messages="checkboxErrors"
-            label="Do you agree?"
-            required
-            @change="$v.checkbox.$touch()"
-            @blur="$v.checkbox.$touch()"
-          ></v-checkbox>
-
-          <v-btn class="mr-4" @click="submit"> submit </v-btn>
+          <v-btn class="mr-4" color="primary" @click="submit"> submit </v-btn>
           <v-btn @click="clear"> clear </v-btn>
         </form>
       </v-col>
@@ -48,55 +43,37 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import { required, maxLength, email } from "vuelidate/lib/validators";
+import { required, maxLength,minLength } from "vuelidate/lib/validators";
 export default {
+  auth: false,
   mixins: [validationMixin],
   layout: "auth",
   validations: {
     name: { required, maxLength: maxLength(10) },
-    email: { required, email },
-    select: { required },
-    checkbox: {
-      checked(val) {
-        return val;
-      },
-    },
+    password: { required ,minLength :minLength(8) },
   },
 
   data: () => ({
     name: "",
-    email: "",
-    select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-    checkbox: false,
+    password: "",
+    show: false
   }),
 
   computed: {
-    checkboxErrors() {
-      const errors = [];
-      if (!this.$v.checkbox.$dirty) return errors;
-      !this.$v.checkbox.checked && errors.push("You must agree to continue!");
-      return errors;
-    },
-    selectErrors() {
-      const errors = [];
-      if (!this.$v.select.$dirty) return errors;
-      !this.$v.select.required && errors.push("Item is required");
-      return errors;
-    },
     nameErrors() {
       const errors = [];
       if (!this.$v.name.$dirty) return errors;
       !this.$v.name.maxLength &&
         errors.push("Name must be at most 10 characters long");
-      !this.$v.name.required && errors.push("Name is required.");
+      !this.$v.name.required && errors.push("Username is required.");
       return errors;
     },
-    emailErrors() {
+    passwordErrors() {
       const errors = [];
-      if (!this.$v.email.$dirty) return errors;
-      !this.$v.email.email && errors.push("Must be valid e-mail");
-      !this.$v.email.required && errors.push("E-mail is required");
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.password.minLength &&
+        errors.push("Password must be at most 8 characters long");
+      !this.$v.password.required && errors.push("Password is required");
       return errors;
     },
   },
@@ -104,13 +81,15 @@ export default {
   methods: {
     submit() {
       this.$v.$touch();
+      if (!this.$v.$invalid){
+        this.$router.push("/");
+      }
     },
     clear() {
       this.$v.$reset();
       this.name = "";
-      this.email = "";
-      this.select = null;
-      this.checkbox = false;
+      this.password = "";
+      this.minLength = "";
     },
   },
 };
