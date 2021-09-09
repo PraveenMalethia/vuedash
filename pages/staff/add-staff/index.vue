@@ -52,11 +52,13 @@
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-text-field
-                    outlined
-                    v-model="staff.position"
-                    label="Position"
-                  ></v-text-field>
+                  <v-select
+                    v-model="staff.role"
+                    :items="staff.roles"
+                    :rules="[(v) => !!v || 'Role is required']"
+                    label="Role"
+                    required
+                  ></v-select>
                 </v-col>
               </v-row>
               <v-menu
@@ -111,6 +113,8 @@ export default {
         salary: "",
         position: "",
         date_of_birth: "",
+        role: null,
+        roles: ["Admin", "Staff"],
       },
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
         .toISOString()
@@ -139,7 +143,7 @@ export default {
     addStaff() {
       if (this.$refs.form.validate()) {
         // this.$store.dispatch("addStaff", this.staff);
-        this.$toast.success('Staff Created')
+        this.$toast.success("Staff Created");
         this.$router.push("/staff");
       }
     },

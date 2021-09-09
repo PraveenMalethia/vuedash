@@ -24,6 +24,7 @@
         v-model="selected"
         :headers="headers"
         :items="desserts"
+        :search="search"
         item-key="name"
         show-select
         loading
