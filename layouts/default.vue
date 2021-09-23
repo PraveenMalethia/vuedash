@@ -1,12 +1,11 @@
 <template>
   <v-app dark id="inspire">
     <v-navigation-drawer v-model="drawer" app>
-      <v-list>
+      <v-list dense nav>
         <v-list-item two-line>
           <v-list-item-avatar>
             <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
           </v-list-item-avatar>
-
           <v-list-item-content>
             <v-list-item-title>Praveen Malethia</v-list-item-title>
             <v-list-item-subtitle>Logged In</v-list-item-subtitle>
@@ -24,7 +23,7 @@
       </v-list>
       <template v-slot:append>
         <div class="pa-5 mb-5">
-          <v-btn block> Logout </v-btn>
+          <v-btn color="red" block dark> Logout </v-btn>
         </div>
       </template>
     </v-navigation-drawer>
