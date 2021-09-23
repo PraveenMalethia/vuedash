@@ -31,10 +31,11 @@
     <v-app-bar app flat>
       <v-app-bar-nav-icon @click="drawer = !drawer"> </v-app-bar-nav-icon>
       <v-toolbar-title>Dashboard</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <SearchBar />
       <!-- <v-avatar class="ml-10" v-if="$vuetify.breakpoint.smAndDown"
         ><img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John"
       /></v-avatar> -->
-      <v-spacer></v-spacer>
       <v-switch v-model="$vuetify.theme.dark" inset class="mt-5"></v-switch>
       <v-avatar >
         <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />

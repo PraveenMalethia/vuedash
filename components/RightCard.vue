@@ -1,6 +1,6 @@
 <template>
   <v-sheet rounded="lg" min-height="268" elevation="10">
-    <v-card max-width="450" class="mx-auto">
+    <v-card class="mx-auto">
       <v-toolbar color="cyan" dark>
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
